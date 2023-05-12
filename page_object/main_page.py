@@ -4,12 +4,6 @@ from page_object.locators import MainPageLocators
 
 
 class MainPage(BasePage):
-    def scroll_down(self):
-        self.driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
-
-    def scroll_up(self):
-        self.driver.execute_script("window.scrollTo(0, document.body.scrollLow);")
-
     def accept_cookie(self):
         cookie = self.find_element(MainPageLocators.accept_cookies)
         cookie.click()
