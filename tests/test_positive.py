@@ -6,7 +6,7 @@ from page_object.order_page import OrderPageFillingData
 from page_object.order_page import RentPageFillingData
 
 
-class TestPositive:
+class TestPositiveOrder:
 
     @pytest.mark.parametrize('enter_button, station, name, last_name, address_to_take, '
                              'phone_number, date, index, color_index, message',
