@@ -7,29 +7,25 @@ from page_object.locators import OrderPageLocators
 class OrderPageFillingData(BasePage):
     @allure.step("Ввод Имени")
     def set_name(self, name):
-        self.find_element(OrderPageLocators.field_name).clear()
-        self.find_element(OrderPageLocators.field_name).send_keys(name)
+        self.send_key(OrderPageLocators.field_name, name)
 
     @allure.step("Ввод Фамилим")
     def set_last_name(self, last_name):
-        self.find_element(OrderPageLocators.field_last_name).clear()
-        self.find_element(OrderPageLocators.field_last_name).send_keys(last_name)
+        self.send_key(OrderPageLocators.field_last_name, last_name)
 
     @allure.step("Ввод адреса")
     def set_address(self, address):
-        self.find_element(OrderPageLocators.field_address).clear()
-        self.find_element(OrderPageLocators.field_address).send_keys(address)
+        self.send_key(OrderPageLocators.field_address, address)
 
     @allure.step("Ввод номера телефона")
     def set_phone_number(self, phone_number):
-        self.find_element(OrderPageLocators.field_phone_number).clear()
-        self.find_element(OrderPageLocators.field_phone_number).send_keys(phone_number)
+        self.send_key(OrderPageLocators.field_phone_number, phone_number)
 
     @allure.step("Выбор остановки метро")
     def set_metro_station(self, station):
         self.find_element(OrderPageLocators.field_subway_station).click()
-        self.find_element(OrderPageLocators.field_subway_station).send_keys(station)
-        self.find_element(OrderPageLocators.field_subway_station).send_keys(Keys.ARROW_DOWN + Keys.ENTER)
+        self.send_key(OrderPageLocators.field_subway_station, station)
+        self.send_key(OrderPageLocators.field_subway_station, Keys.ARROW_DOWN + Keys.ENTER)
 
     @allure.step("Клик на кнопку продолжить")
     def click_next(self):
@@ -52,7 +48,7 @@ class OrderPageFillingData(BasePage):
 class RentPageFillingData(BasePage):
     @allure.step("Ввод даты доставки")
     def set_when_to_bring(self, date):
-        self.find_element(OrderPageLocators.field_when_to_bring).send_keys(date)
+        self.send_key(OrderPageLocators.field_when_to_bring, date)
 
     @allure.step("Выбор срока аренды")
     def set_rental_period(self, index):
@@ -65,12 +61,11 @@ class RentPageFillingData(BasePage):
 
     @allure.step("Заполнение комментария для курьера")
     def set_comment_for_the_courier(self, message):
-        self.find_element(OrderPageLocators.field_comment).send_keys(message)
+        self.send_key(OrderPageLocators.field_comment, message)
 
     @allure.step("Заполнение формы Про аренду")
     def filling_about_rent_date(self, date, index, color, message):
         self.wait_element(OrderPageLocators.field_comment[1])
-
         self.set_when_to_bring(date)
         self.set_rental_period(index)
         self.set_scooter_color(color)
