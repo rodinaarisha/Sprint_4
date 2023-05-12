@@ -22,39 +22,44 @@ class TestPositive:
     @allure.title("Проверка оформления заказа")
     def test_order(self, driver, enter_button, station, name, last_name,
                    address_to_take, phone_number, date, index, color_index, message):
-        MainPage(driver).accept_cookie()
-        MainPage(driver).click_order(enter_button)
+        main_page = MainPage(driver)
+        order_page = OrderPageFillingData(driver)
+        rent_page = RentPageFillingData(driver)
+        main_page.accept_cookie()
+        main_page.click_order(enter_button)
 
-        OrderPageFillingData(driver).filling_order_data(
+        order_page.filling_order_data(
                                      name=name,
                                      last_name=last_name,
                                      address_to_take=address_to_take,
                                      station=station,
                                      phone_number=phone_number)
 
-        OrderPageFillingData(driver).click_next()
+        order_page.click_next()
 
-        RentPageFillingData(driver).filling_about_rent_date(
+        rent_page.filling_about_rent_date(
                                               date=date,
                                               index=index,
                                               color=color_index,
                                               message=message)
 
-        RentPageFillingData(driver).click_on_button_to_order()
-        RentPageFillingData(driver).click_yes_on_modal_menu()
+        rent_page.click_on_button_to_order()
+        rent_page.click_yes_on_modal_menu()
 
-        assert "Заказ оформлен" in RentPageFillingData(driver).completed_order(), 'Всплывающее окно с сообщением об успешном создании заказа должно отображаться.'
+        assert "Заказ оформлен" in rent_page.completed_order(), 'Всплывающее окно с сообщением об успешном создании заказа должно отображаться.'
 
     @allure.title("Проверка навигации с помощью кнопки логотипа 'Самоката'")
     def test_click_on_logo(self, driver):
         driver.get("https://qa-scooter.praktikum-services.ru/order")
-        MainPage(driver).click_on_logo_scooter()
-        MainPage(driver).checking_tabs()
+        main_page = MainPage(driver)
+        main_page.click_on_logo_scooter()
+        main_page.checking_tabs()
 
         assert driver.current_url == "https://qa-scooter.praktikum-services.ru/", 'Навигация на главную страницу «Самоката».'
 
     @allure.title("Проверка навигации с помощью кнопки логотипа 'Яндекса'")
     def test_click_on_logo_yandex(self, driver):
-        MainPage(driver).click_on_logo_yandex()
-        MainPage(driver).checking_tabs()
+        main_page = MainPage(driver)
+        main_page.click_on_logo_yandex()
+        main_page.checking_tabs()
         assert driver.current_url == "https://dzen.ru/?yredirect=true", 'В новом окне должна открыться главная страница Яндекса(Дзен).'
