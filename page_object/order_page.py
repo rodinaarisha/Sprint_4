@@ -1,7 +1,7 @@
 import allure
 from selenium.webdriver import Keys
-from PageObject.BasePage import BasePage
-from PageObject.locators import OrderPageLocators
+from page_object.base_page import BasePage
+from page_object.locators import OrderPageLocators
 
 
 class OrderPageFillingData(BasePage):

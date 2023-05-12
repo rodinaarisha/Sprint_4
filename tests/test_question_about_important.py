@@ -1,7 +1,7 @@
 import pytest
-from PageObject.locators import MainPageLocators
-from PageObject.MainPage import MainPage
-from PageObject.MainPage import BasePage
+from page_object.locators import MainPageLocators
+from page_object.main_page import MainPage
+from page_object.main_page import BasePage
 from data import DataExample
 
 

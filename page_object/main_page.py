@@ -1,6 +1,6 @@
 import allure
-from PageObject.BasePage import BasePage
-from PageObject.locators import MainPageLocators
+from page_object.base_page import BasePage
+from page_object.locators import MainPageLocators
 
 
 class MainPage(BasePage):

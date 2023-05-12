@@ -1,9 +1,9 @@
 import pytest
 import allure
-from PageObject.locators import MainPageLocators
-from PageObject.MainPage import MainPage
-from PageObject.OrderPage import OrderPageFillingData
-from PageObject.OrderPage import RentPageFillingData
+from page_object.locators import MainPageLocators
+from page_object.main_page import MainPage
+from page_object.order_page import OrderPageFillingData
+from page_object.order_page import RentPageFillingData
 
 
 class TestPositive:
