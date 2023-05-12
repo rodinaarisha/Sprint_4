@@ -1,6 +1,6 @@
 import pytest
 import allure
-from page_object.locators import MainPageLocators
+from data import user_1, user_2
 from page_object.main_page import MainPage
 from page_object.order_page import OrderPageFillingData
 from page_object.order_page import RentPageFillingData
@@ -10,15 +10,16 @@ class TestPositiveOrder:
 
     @pytest.mark.parametrize('enter_button, station, name, last_name, address_to_take, '
                              'phone_number, date, index, color_index, message',
-                             [pytest.param(MainPageLocators.button_order_up,
-                                           "Сокол", "Арина", "Родина",
-                                           "Москва, ул Ленинградский проспект, 71а ст4 кв12", "89378761223",
-                                           "20.05.2023", 3, 1, "Домофон не работает, необходимо будет позвонить перед подъездом"),
+                             [pytest.param(user_1.enter_button, user_1.station, user_1.name,
+                                           user_1.last_name, user_1.address_to_take,
+                                           user_1.phone_number, user_1.date, user_1.index,
+                                           user_1.color_index, user_1.message),
+                              pytest.param(user_2.enter_button, user_2.station, user_2.name,
+                                           user_2.last_name, user_2.address_to_take,
+                                           user_2.phone_number, user_2.date, user_2.index,
+                                           user_2.color_index, user_2.message)])
 
-                              pytest.param(MainPageLocators.button_order_down,
-                                           "Митино", "Анна", "Андреева",
-                                           "Москва, ул Митинская, 27 кв 27", "+78765676543",
-                                           "18.10.2023", 4, 0, "Привозите после 18:00")])
+
     @allure.title("Проверка оформления заказа")
     def test_order(self, driver, enter_button, station, name, last_name,
                    address_to_take, phone_number, date, index, color_index, message):
