@@ -1,4 +1,5 @@
 import pytest
+import allure
 from page_object.locators import MainPageLocators
 from page_object.main_page import MainPage
 from page_object.main_page import BasePage
@@ -8,6 +9,7 @@ from data import DataExample
 class TestQuestion:
 
     @pytest.mark.parametrize('question_index', [i for i in range(1)])
+    @allure.title("Проверка выпадающего списка в разделе «Вопросы о важном")
     def test_click_on_question_and_check_answer(self, driver, question_index):
         main_page = MainPage(driver)
         base_page = BasePage(driver)
