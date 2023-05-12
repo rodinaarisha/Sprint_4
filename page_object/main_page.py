@@ -4,10 +4,11 @@ from page_object.locators import MainPageLocators
 
 
 class MainPage(BasePage):
+    @allure.step("Даем согласие на cookies")
     def accept_cookie(self):
         cookie = self.find_element(MainPageLocators.accept_cookies)
         cookie.click()
-
+    @allure.step("Кликаем на вопрос из раздела 'Вопросы о важном'")
     def check_answers_in_questions_about_important(self, question_pos):
         self.wait_element(MainPageLocators.title_questions_about_important[1])
         self.wait_element(MainPageLocators.menu[1])
