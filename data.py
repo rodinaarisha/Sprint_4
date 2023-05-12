@@ -1,3 +1,32 @@
+from dataclasses import dataclass
+from page_object.locators import MainPageLocators
+
+
+@dataclass
+class User:
+    enter_button: list
+    station: str
+    name: str
+    last_name: str
+    address_to_take: str
+    phone_number: str
+    date: str
+    index: int
+    color_index: int
+    message: str
+
+
+user_1 = User(MainPageLocators.button_order_up,
+                  "Сокол", "Арина", "Родина",
+                  "Москва, ул Ленинградский проспект, 71а ст4 кв12", "89378761223",
+                  "20.05.2023", 3, 1, "Домофон не работает, необходимо будет позвонить перед подъездом")
+
+
+user_2 = User(MainPageLocators.button_order_down,
+                  "Митино", "Анна", "Андреева",
+                  "Москва, ул Митинская, 27 кв 27", "+78765676543",
+                  "18.10.2023", 4, 0, "Привозите после 18:00")
+
 
 class DataExample:
     dictionary_question_and_answers = {"Сколько это стоит? И как оплатить?": "Сутки — 400 рублей. Оплата курьеру — наличными или картой.",
