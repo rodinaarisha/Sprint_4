@@ -15,6 +15,9 @@ class BasePage:
 
     def find_elements(self, locator, time=20):
         return WebDriverWait(self.driver, time).until(ec.presence_of_all_elements_located(locator), message=f"Can't find elements by locator {locator}")
+    def send_key(self, locator, name):
+        self.find_element(locator).clear()
+        return self.find_element(locator).send_keys(name)
 
     def scroll_down(self):
         self.driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
