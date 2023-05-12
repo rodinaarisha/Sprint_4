@@ -8,7 +8,7 @@ from data import DataExample
 
 class TestQuestion:
 
-    @pytest.mark.parametrize('question_index', [i for i in range(1)])
+    @pytest.mark.parametrize('question_index', [i for i in range(8)])
     @allure.title("Проверка выпадающего списка в разделе «Вопросы о важном")
     def test_click_on_question_and_check_answer(self, driver, question_index):
         main_page = MainPage(driver)
